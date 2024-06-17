@@ -1,33 +1,54 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer tailwind-base, primereact, tailwind-utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer tailwind-base {
+  @tailwind base;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply bg-primary;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.navbar-home {
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(17.5px);
+  -webkit-backdrop-filter: blur(17.5px);
+}
+
+.more-gallery::-webkit-scrollbar {
+  height: 8px;
+}
+
+.more-gallery::-webkit-scrollbar-track {
+  background: #1c1c1c;
+}
+
+.more-gallery::-webkit-scrollbar-thumb {
+  @apply rounded-lg;
+  background: #888;
+}
+
+.more-gallery::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 120px;
+  height: 20px;
+  -webkit-mask: radial-gradient(circle closest-side, #1d4ed8 94%, #0000)
+    left/20% 100%;
+  background: linear-gradient(#1d4ed8 0 0) left/0% 100% no-repeat #ddd;
+  animation: l17 2s infinite steps(6);
+}
+@keyframes l17 {
+  100% {
+    background-size: 120% 100%;
   }
 }
